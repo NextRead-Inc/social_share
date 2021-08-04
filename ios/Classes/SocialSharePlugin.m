@@ -167,6 +167,7 @@
                     //appending url with normal text and url scheme
                     NSString *urlWithLink = [urlSchemeSms stringByAppendingString:[url absoluteString]];
                     NSString *finalurl = [urlWithLink stringByAppendingString:trailingText];
+NSLog("TWITTER URL SCHEME is %@", finalurl);
                     //final urlscheme
                     NSURL *urlSchemeMsg = [NSURL URLWithString:finalurl];
                     if (@available(iOS 10.0, *)) {
