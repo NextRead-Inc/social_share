@@ -138,10 +138,11 @@
             //check if it contains a link
             if ( [ [url absoluteString]  length] == 0 ) {
                 NSString *urlSchemeTwitter = [NSString stringWithFormat:@"twitter://post?message=%@",captionText];
+NSLog(@"TWITTER URL SCHEME is %@", urlSchemeTwitter);
                 NSURL *urlSchemeSend = [NSURL URLWithString:urlSchemeTwitter];
                 if (@available(iOS 10.0, *)) {
                     [[UIApplication sharedApplication] openURL:urlSchemeSend options:@{} completionHandler:nil];
-                    result(@"sharing");
+                    result(@"sharing 1");
                 } else {
                   result(@"this only supports iOS 10+");
                 }
@@ -152,12 +153,13 @@
                     NSString *urlSchemeSms = [NSString stringWithFormat:@"twitter://post?message=%@",captionText];
                     //appending url with normal text and url scheme
                     NSString *urlWithLink = [urlSchemeSms stringByAppendingString:[url absoluteString]];
+NSLog(@"TWITTER URL SCHEME is %@", urlWithLink);
 
                     //final urlscheme
                     NSURL *urlSchemeMsg = [NSURL URLWithString:urlWithLink];
                     if (@available(iOS 10.0, *)) {
                         [[UIApplication sharedApplication] openURL:urlSchemeMsg options:@{} completionHandler:nil];
-                        result(@"sharing");
+                        result(@"sharing 2");
                     } else {
                         result(@"this only supports iOS 10+");
                     }
@@ -172,7 +174,7 @@ NSLog(@"TWITTER URL SCHEME is %@", finalurl);
                     NSURL *urlSchemeMsg = [NSURL URLWithString:finalurl];
                     if (@available(iOS 10.0, *)) {
                         [[UIApplication sharedApplication] openURL:urlSchemeMsg options:@{} completionHandler:nil];
-                        result(@"sharing");
+                        result(@"sharing 3");
                     } else {
                         result(@"this only supports iOS 10+");
                     }
